@@ -1,0 +1,50 @@
+@startuml
+
+entity "Копия" as copy {
++ ID_копии
+Положение_на_полке
+}
+
+entity "Книга" as book {
++ ISBN_книги
+--
+Название
+Год_выпуска
+Количество_страниц
+}
+
+entity "Издатель" as publisher {
++ ID_издателя
+--
+Имя
+Адрес
+}
+
+entity "Категория" as category {
++ Имя
+}
+
+entity "Читатель" as reader {
++ ID_читателя
+--
+Фамилия
+Имя
+Адрес
+День_рождения
+}
+
+entity "Взятие книги" as book_rent {
++ ID_читателя
+ ID_копии_книги
+--
+Дата_возврата
+}
+
+book ||--|{ copy: "Выпущена"
+publisher ||--|{ book: "Выпустил"
+category ||--o{ category: "Подчинено"
+category ||--|{ book: "Присвоена"
+reader ||--|{book_rent: "Имеет"
+copy ||--||book_rent: "Сдана"
+
+@enduml

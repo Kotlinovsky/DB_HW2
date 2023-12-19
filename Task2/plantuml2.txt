@@ -1,0 +1,14 @@
+@startuml
+
+entity "Команда" as team {
+}
+
+entity "Матч" as match {
+}
+
+entity "Арбитр" as arbitr {
+}
+
+team ||--|{ match: "Участвует 1"
+team ||--|{ match: "Участвует 2"
+match }|--|| arbitr: "Модерируется"

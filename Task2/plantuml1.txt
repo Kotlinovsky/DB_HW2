@@ -1,0 +1,43 @@
+@startuml
+
+entity "Квартира" as flat {
++ ID квартиры
+--
+ID дома
+Дата продажи
+Цена
+}
+
+entity "Дом" as building {
++ ID дома
+--
+ID улицы
+Год строительства
+Тип дома
+}
+
+entity "Улица" as street {
++ ID улицы
+--
+ID города
+Название
+Год создания
+}
+
+entity "Город" as city {
++ ID города
+--
+ID страны
+Название
+}
+
+entity "Страна" as country {
++ ID страны
+--
+Название
+}
+
+flat }|--|| building: "Находится внутри"
+building }|--|| street: "Находится на"
+street }|--|| city: "Принадлежит"
+city }|--|| country: "Принадлежит"
